@@ -63,3 +63,8 @@ function iterator() {
     console.log(iterator.currentItem());
   }
 }
+/**
+ * es6也提供了Iterator接口
+ *
+ * @see http://es6.ruanyifeng.com/#docs/iterator
+ */

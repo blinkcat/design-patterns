@@ -39,3 +39,9 @@ function proxy() {
 
   image.displayImage();
 }
+
+/**
+ * es6提供了原生的代理 Proxy
+ *
+ * @see http://es6.ruanyifeng.com/#docs/proxy
+ */

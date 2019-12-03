@@ -1,0 +1,3 @@
+@startuml simple factory
+abstract Product
+@enduml

@@ -1,0 +1,43 @@
+@startuml abstract factory
+abstract Factory{
+  {abstract} createProductA():ProductA
+  {abstract} createProductB():ProductB
+}
+class ConcreteFactory1{
+  + createProductA():ProductA
+  + createProductB():ProductB
+}
+class ConcreteFactory2{
+  + createProductA():ProductA
+  + createProductB():ProductB
+}
+abstract ProductA{
+  {abstract} use()
+}
+class ConcreteProductA1{
+  + use()
+}
+class ConcreteProductA2{
+  + use()
+}
+abstract ProductB{
+  {abstract} use()
+}
+class ConcreteProductB1{
+  + use()
+}
+class ConcreteProductB2{
+  + use()
+}
+
+Factory <|.up. ConcreteFactory1
+Factory <|.up. ConcreteFactory2
+ProductA <|.down. ConcreteProductA1
+ProductA <|.down. ConcreteProductA2
+ProductB <|.down. ConcreteProductB1
+ProductB <|.down. ConcreteProductB2
+ConcreteProductA1 <.. ConcreteFactory1
+ConcreteProductA2 <.. ConcreteFactory2
+ConcreteProductB1 <.. ConcreteFactory1
+ConcreteProductB2 <.. ConcreteFactory2
+@enduml

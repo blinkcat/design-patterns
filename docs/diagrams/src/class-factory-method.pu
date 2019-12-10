@@ -1,0 +1,18 @@
+@startuml factory method
+abstract Product{
+  {abstract} use()
+}
+class ConcreteProduct{
+  +use()
+}
+abstract Factory{
+  {abstract} factoryMethod():Product
+}
+class ConcreteFactory{
+  + factoryMethod():Product
+}
+
+Product <|..ConcreteProduct
+Factory <|.. ConcreteFactory
+ConcreteProduct <.left. ConcreteFactory
+@enduml

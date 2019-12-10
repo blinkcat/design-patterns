@@ -1,0 +1,44 @@
+@startuml abstract factory
+autonumber
+
+actor Main
+participant ":ConcreteFactory1" as factory1
+participant ":ConcreteProductA1" as productA1
+participant ":ConcreteProductB1" as productB1
+participant ":ConcreteFactory2" as factory2
+participant ":ConcreteProductA2" as productA2
+participant ":ConcreteProductB2" as productB2
+
+Main -> factory1 : createProductA():ProductA
+activate Main
+activate factory1
+factory1 --> productA1 ** : <<create>>
+deactivate factory1
+Main -> factory1 : createProductB():ProductB
+activate factory1
+factory1 --> productB1 ** : <<create>>
+deactivate factory1
+Main -> productA1 : use()
+activate productA1
+destroy productA1
+Main -> productB1 : use()
+activate productB1
+destroy productB1
+deactivate Main
+
+Main -> factory2 : createProductA():ProductA
+activate Main
+activate factory2
+factory2 --> productA2 ** : <<create>>
+deactivate factory2
+Main -> factory2 : createProductB():ProductB
+activate factory2
+factory2 --> productB2 ** : <<create>>
+deactivate factory2
+Main -> productA2 : use()
+activate productA2
+destroy productA2
+Main -> productB2 : use()
+activate productB2
+destroy productB2
+@enduml

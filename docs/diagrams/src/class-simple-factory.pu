@@ -1,0 +1,19 @@
+@startuml simple factory
+abstract Product{
+  {abstract} use()
+}
+class ConcreteProductA{
+  +use()
+}
+class ConcreteProductB{
+  +use()
+}
+class Factory{
+  {static} createProduct(string):Product
+}
+
+Product <|.. ConcreteProductA
+Product <|.. ConcreteProductB
+ConcreteProductA <.. Factory
+ConcreteProductB <.. Factory
+@enduml

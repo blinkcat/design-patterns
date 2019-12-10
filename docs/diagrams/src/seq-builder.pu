@@ -1,0 +1,25 @@
+@startuml builder
+autonumber
+
+actor Main
+participant ":Director" as director
+participant ":ConcreteBuilder" as builder
+
+activate Main
+Main --> builder ** : <<create>>
+Main --> director ** : <<create>>
+Main -> director : construct():Product
+activate director
+director -> builder : buildPartA()
+activate builder
+deactivate builder
+director -> builder : buildPartB()
+activate builder
+deactivate builder
+director -> builder : buildPartC()
+activate builder
+deactivate builder
+director -> builder : getResult()
+activate builder
+deactivate builder
+@enduml

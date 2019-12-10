@@ -1,0 +1,16 @@
+@startuml factory method
+autonumber
+
+actor Main
+participant ":ConcreteFactory" as factory
+participant ":ConcreteProduct" as product
+
+Main -> factory : factoryMethod():Product
+activate Main
+activate factory
+factory --> product ** : <<create>>
+deactivate factory
+Main -> product : use()
+activate product
+destroy product
+@enduml

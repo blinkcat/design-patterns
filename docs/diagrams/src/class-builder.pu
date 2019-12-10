@@ -1,0 +1,24 @@
+@startuml builder
+class Direcotr{
+  - builder: Builder
+
+  + construct():void
+}
+abstract Builder{
+  {abstract} buildPartA():void
+  {abstract} buildPartB():void
+  {abstract} buildPartC():void
+  + getResult(): Product
+}
+class ConcreteBuilder{
+  + buildPartA():void
+  + buildPartB():void
+  + buildPartC():void
+  + getResult(): Product
+}
+class Product
+
+Direcotr -right-> Builder
+Builder <|.. ConcreteBuilder
+ConcreteBuilder .left.> Product
+@enduml

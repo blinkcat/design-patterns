@@ -1,0 +1,18 @@
+@startuml adapter
+
+class Client
+abstract Target{
+  {abstract}request():void
+}
+class Adapter{
+  - adaptee: Adaptee
+  + request():void
+}
+class Adaptee{
+  + specificRequest():void
+}
+
+Client -right-> Target
+Adapter .up.|> Target
+Adapter -right-> Adaptee
+@enduml

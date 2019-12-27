@@ -1,0 +1,16 @@
+@startuml strategy
+autonumber
+
+participant ":Client" as client
+participant ":Context" as context
+participant ":ConcreteStrategyA" as strategyA
+
+activate client
+client --> strategyA ** : <<create>>
+client --> context ** : new Context(strategyA)\n<<create>>
+client -> context : execute()
+activate context
+context -> strategyA : execute()
+activate strategyA
+
+@enduml

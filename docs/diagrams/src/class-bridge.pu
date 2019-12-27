@@ -1,0 +1,27 @@
+@startuml bridge
+class Client
+abstract Abstraction{
+  - imp: Implementor
+  constructor(imp: Implementor)
+  {abstract} operation():void
+}
+class RefinedAbstraction{
+  constructor(imp: Implementor)
+  + operation():void
+}
+abstract Implementor{
+  {abstract} operationImp():void
+}
+class ConcreteImplementorA{
+  + operationImp():void
+}
+class ConcreteImplementorB{
+  + operationImp():void
+}
+
+Client -> Abstraction
+RefinedAbstraction .up.|> Abstraction
+Abstraction o-right- Implementor
+ConcreteImplementorA .up.|> Implementor
+ConcreteImplementorB .up.|> Implementor
+@enduml

@@ -1,0 +1,26 @@
+@startuml flyweight
+autonumber
+
+participant ":Client" as client
+participant ":FlyweightFactory" as factory
+participant ":ConcreteFlyweight" as flyweight
+
+activate client
+client --> factory ** : <<create>>
+client -> factory : getFlyweight(key)
+activate factory
+factory --> flyweight ** : <<create>>
+factory --> client : concreteFlyweight instance
+deactivate factory
+client -> flyweight : operation()
+activate flyweight
+deactivate flyweight
+deactivate client
+client -> factory : getFlyweight(same key)
+activate client
+activate factory
+factory --> client : same concreteFlyeweight instance
+deactivate factory
+client -> flyweight : operation
+activate flyweight
+@enduml

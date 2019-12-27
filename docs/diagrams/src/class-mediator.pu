@@ -1,0 +1,29 @@
+@startuml mediator
+abstract Mediator{
+  {abstract} operation(colleagueId:number)
+  {abstract} register(colleague: Colleague)
+}
+class ConcreteMediator{
+  operation(colleagueId: number)
+}
+abstract Colleague{
+  + receiveMsg()
+  {abstract} sendMsg(colleagueId: number)
+  {abstract} setMediator(mediator:Mediator)
+}
+class ConcreteColleagueA{
+  + sendMsg(colleagueId: number)
+  + setMediator(mediator:Mediator)
+}
+class ConcreteColleagueB{
+  + sendMsg(colleagueId: number)
+  + setMediator(mediator:Mediator)
+}
+
+ConcreteMediator -up-|> Mediator
+ConcreteColleagueA -up-|> Colleague
+ConcreteColleagueB -up-|> Colleague
+Colleague -right-> Mediator
+ConcreteMediator --> ConcreteColleagueA
+ConcreteMediator --> ConcreteColleagueB
+@enduml

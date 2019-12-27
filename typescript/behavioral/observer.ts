@@ -49,7 +49,11 @@ function observer() {
     }
 
     update() {
-      console.log(this.subject.getHour, this.subject.getMinute(), this.subject.getSecond());
+      console.log(
+        this.subject.getHour,
+        this.subject.getMinute(),
+        this.subject.getSecond()
+      );
     }
   }
 
@@ -59,7 +63,11 @@ function observer() {
     }
 
     update() {
-      console.log(this.subject.getHour, this.subject.getMinute(), this.subject.getSecond());
+      console.log(
+        this.subject.getHour,
+        this.subject.getMinute(),
+        this.subject.getSecond()
+      );
     }
   }
 
@@ -68,6 +76,9 @@ function observer() {
 
   const digitalClock = new DigitalClock(timer);
   const analogClock = new AnalogClock(timer);
+
+  timer.attach(digitalClock);
+  timer.attach(analogClock);
 
   timer.tick();
 }

@@ -1,0 +1,18 @@
+@startuml state
+autonumber
+
+participant ":Client" as client
+participant ":Context" as context
+participant ":ConcreteStateA" as stateA
+participant ":ConcreteStateB" as stateB
+
+activate client
+client --> context ** : <<create>>
+context --> stateA ** : new ConcreteStateA()
+client -> context : request()
+activate context
+context -> stateA : handle()
+activate stateA
+stateA --> stateB ** : <<create>>
+stateA -> context : changeState(stateB)
+@enduml

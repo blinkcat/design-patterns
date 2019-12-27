@@ -1,0 +1,18 @@
+@startuml decorator
+autonumber
+
+participant ":Client" as client
+participant ":ConcreteComponent" as component
+participant ":ConcreteDecorator" as decorator
+
+activate client
+client --> component ** : <<create>>
+client --> decorator ** : new ConcreteDecorator(concreteComponent)
+client -> decorator : operation()
+activate decorator
+decorator -> component : operation()
+activate component
+deactivate component
+decorator -> decorator : addedBehavior()
+activate decorator
+@enduml

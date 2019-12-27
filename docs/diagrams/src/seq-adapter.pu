@@ -1,0 +1,15 @@
+@startuml adapter
+autonumber
+
+participant ":Client" as client
+participant ":Adapter" as adapter
+participant ":Adaptee" as adaptee
+
+activate client
+client --> adaptee ** : <<create>>
+client --> adapter ** : new Adapter(adaptee)\n<<create>>
+client -> adapter : request()
+activate adapter
+adapter -> adaptee : specificRequest()
+activate adaptee
+@enduml

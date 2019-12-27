@@ -1,0 +1,34 @@
+@startuml mediator
+autonumber
+
+participant ":Client" as client
+participant "colleagueA:ConcreteColleagueA" as colleagueA
+participant "colleagueB:ConcreteColleagueB" as colleagueB
+participant "mediator:ConcreteMediator" as mediator
+
+activate client
+client --> colleagueA ** : <<create>>
+client --> colleagueB ** : <<create>>
+client --> mediator ** : <<create>>
+client -> mediator : register(colleagueA)
+activate mediator
+mediator -> colleagueA : setMediator(mediator)
+activate colleagueA
+deactivate colleagueA
+deactivate mediator
+client -> mediator : register(colleagueB)
+activate mediator
+mediator -> colleagueB : setMediator(mediator)
+activate colleagueB
+deactivate colleagueB
+deactivate client
+deactivate mediator
+
+client -> colleagueA : sendMsg(toB)
+activate client
+activate colleagueA
+colleagueA -> mediator : operation(toB)
+activate mediator
+mediator -> colleagueB : receiveMsg()
+activate colleagueB
+@enduml

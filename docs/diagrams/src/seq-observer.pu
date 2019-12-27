@@ -1,0 +1,24 @@
+@startuml observer
+autonumber
+
+participant ":Client" as client
+participant ":ConcreteObserver" as observer
+participant ":ConcreteSubject" as subject
+
+activate client
+client --> observer ** : <<create>>
+client --> subject ** : <<create>>
+client -> subject : attach(observer)
+activate subject
+deactivate client
+deactivate subject
+client -> subject : setState()
+activate client
+activate subject
+subject -> subject : notify()
+activate subject
+subject -> observer : update()
+deactivate subject
+activate observer
+observer -> subject : getState()
+@enduml

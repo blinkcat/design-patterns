@@ -1,0 +1,15 @@
+@startuml singleton
+autonumber
+
+actor Main
+participant ":Singleton" as singleton
+
+Main -> singleton : getInstance():Singleton
+activate Main
+activate singleton
+singleton -> singleton : <<create>>
+activate singleton
+deactivate singleton
+singleton --> Main : Singleton instance
+deactivate singleton
+@enduml

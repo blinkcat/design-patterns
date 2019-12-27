@@ -1,0 +1,15 @@
+@startuml bridge
+autonumber
+
+participant ":Client" as client
+participant ":ConcreteImplementorA" as implementor
+participant ":RefinedAbstraction" as abstraction
+
+activate client
+client --> implementor ** : <<create>>
+client --> abstraction ** : new RefinedAbstraction(concreteImplementorA)\n<<create>>
+client -> abstraction : operation()
+activate abstraction
+abstraction -> implementor : operationImp()
+activate implementor
+@enduml

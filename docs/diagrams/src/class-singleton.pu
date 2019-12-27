@@ -1,0 +1,7 @@
+@startuml singleton
+class Singleton{
+  - {static} instance
+  # constructor()
+  + {static} getInstance():Singleton
+}
+@enduml

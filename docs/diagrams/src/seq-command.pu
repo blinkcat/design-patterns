@@ -1,0 +1,21 @@
+@startuml command
+autonumber
+
+participant ":Client" as client
+participant ":Receiver" as receiver
+participant ":ConcreteCommand" as command
+participant ":Invoker" as invoker
+
+activate client
+client --> receiver ** : <<create>>
+client --> command ** : new ConcreteCommand(receiver)
+client --> invoker ** : new Invoker(command)
+deactivate client
+client -> invoker : call()
+activate client
+activate invoker
+invoker -> command : execute()
+activate command
+command -> receiver : action()
+activate receiver
+@enduml

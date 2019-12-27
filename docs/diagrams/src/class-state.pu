@@ -1,0 +1,19 @@
+@startuml state
+class Context{
+  + changeState(state:State):void
+  + request():void
+}
+interface State{
+  handle():void
+}
+class ConcreteStateA{
+  +handle():void
+}
+class ConcreteStateB{
+  +handle():void
+}
+
+Context o-right- State
+ConcreteStateA .up.|> State
+ConcreteStateB .up.|> State
+@enduml

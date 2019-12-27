@@ -1,0 +1,25 @@
+@startuml decorator
+abstract Component{
+  {abstract} operation()
+}
+class ConcreteComponent{
+  + operation()
+}
+abstract Decorator{
+  {abstract} operation()
+}
+class ConcreteDecoratorA{
+  + addedState
+  + operation()
+}
+class ConcreteDecoratorB{
+  + operation()
+  + addedBehavior()
+}
+
+ConcreteComponent -up-|> Component
+Decorator -up-|> Component
+Decorator o-up- Component : component
+ConcreteDecoratorA .up.|>Decorator
+ConcreteDecoratorB .up.|>Decorator
+@enduml

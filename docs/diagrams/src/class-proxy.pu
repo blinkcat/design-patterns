@@ -1,0 +1,19 @@
+@startuml proxy
+class Client
+abstract Subject{
+  {abstract} request()
+}
+class Proxy{
+  + beforeRequest()
+  + request()
+  + afterRequest()
+}
+class RealSubject{
+  + request()
+}
+
+Client .right.> Proxy
+Proxy .up.|> Subject
+RealSubject .up.|> Subject
+Proxy "subject" -right-> RealSubject
+@enduml

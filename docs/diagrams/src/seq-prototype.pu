@@ -1,0 +1,12 @@
+@startuml prototype
+autonumber
+
+participant ":Client" as client
+participant ":ConcretePrototype1" as prototype
+
+activate client
+client --> prototype ** : <<create>>
+client -> prototype : clone()
+activate prototype
+prototype --> client : copy of self
+@enduml

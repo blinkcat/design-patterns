@@ -1,0 +1,24 @@
+@startuml facade
+autonumber
+
+participant ":Client" as client
+participant ":Facade" as facade
+participant ":SystemA" as systemA
+participant ":SystemB" as systemB
+
+activate client
+client --> facade ** : <<create>>
+activate facade
+facade --> systemA ** : <<create>>
+facade --> systemB ** : <<create>>
+deactivate facade
+client -> facade : wrapOperation()
+activate facade
+facade -> systemA : operationA()
+activate systemA
+deactivate systemA
+facade -> systemB : operationA()
+activate systemB
+deactivate systemB
+
+@enduml

@@ -1,0 +1,25 @@
+@startuml observer
+abstract Subject{
+  - list: Set<Observer>
+  + attach():void
+  + detach():void
+  + notify():void
+}
+class ConcreteSubject{
+  + getState()
+  + setState()
+}
+abstract Observer{
+  {abstract} update(): void
+}
+class ConcreteObserver{
+  - observerState
+  + update(): void
+}
+
+ConcreteSubject -up-|> Subject
+ConcreteObserver -up-|> Observer
+Subject -right-> Observer
+ConcreteObserver .left.> ConcreteSubject
+
+@enduml
